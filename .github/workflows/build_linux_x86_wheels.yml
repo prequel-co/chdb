@@ -76,6 +76,10 @@ jobs:
           sudo ln -s /usr/bin/clang++-18 /usr/bin/clang++
           which clang++
           clang++ --version
+      - name: Disable static linking
+        run: |
+          sed -i 's/-DUSE_STATIC_LIBRARIES=1/-DUSE_STATIC_LIBRARIES=0/' chdb/build.sh
+          sed -i 's/-DSPLIT_SHARED_LIBRARIES=0/-DSPLIT_SHARED_LIBRARIES=1/' chdb/build.sh
       - name: Run chdb/build.sh
         run: |
           python3 -m pip install pybind11 setuptools
