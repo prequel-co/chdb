@@ -100,7 +100,6 @@ jobs:
           patchelf --version
         shell: bash
       - name: Packege libchdb.so
-        if: matrix.python-version == '3.12'
         run: |
           cp programs/local/chdb.h chdb.h
           tar -czvf linux-x86_64-libchdb.tar.gz libchdb.so chdb.h
